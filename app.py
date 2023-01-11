@@ -35,18 +35,16 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.datasets import load_iris
 #from factor_analyzer import FactorAnalyzer
 from sklearn.feature_extraction import DictVectorizer
-import xgboost as xgb
-from xgboost import XGBClassifier
-from xgboost import plot_importance
-from xgboost import cv
-import matplotlib.pyplot as plt
+
 plt.rcParams.update({'font.size': 12})
 
 #gradio 
 import gradio as gr
+
 import random
 from datasets import load_dataset
 import shap
+
 #save params
 import pickle
 
@@ -108,7 +106,7 @@ col = ['city_amsterdam', 'city_copenhagen', 'city_madrid', 'city_paris',
 """## Chargement du model pré-entrainé"""
 
 # load the model
-xgb_model_loaded = pickle.load(open('/content/Defi_IA_2023/model_gbmOpt_mat4.pkl', "rb"))
+xgb_model_loaded = pickle.load(open('/data/model_gbmOpt_mat4.pkl', "rb"))
 
 """## Fonction de prédiction du nouvelle individu"""
 
