@@ -55,7 +55,7 @@ import pickle
 
 def to_dummies(data_test):
   # merge on hotel id
-  hotels = pd.read_csv('/data/features_hotels.csv',index_col=0)
+  hotels = pd.read_csv('data/features_hotels.csv',index_col=0)
   hotels = hotels.drop(['city'], axis = 1)
   data_test = data_test.join(hotels, on = 'hotel_id')
   
@@ -105,12 +105,14 @@ col = ['city_amsterdam', 'city_copenhagen', 'city_madrid', 'city_paris',
 
 """## Chargement du model pré-entrainé"""
 
+hotels = pd.read_csv('data/features_hotels.csv',index_col=0)
+
 # load the model
-xgb_model_loaded = pickle.load(open('/data/model_gbmOpt_mat4.pkl', "rb"))
+xgb_model_loaded = pickle.load(open('data/model_gbmOpt_mat4.pkl', "rb"))
 
 """## Fonction de prédiction du nouvelle individu"""
 
-hotels = pd.read_csv('/data/features_hotels.csv',index_col=0)
+
 
 def predict_new_indiv(language,city,date,mobile,order_requests,stock,hotel_id):
     avatar_id = 1
@@ -129,14 +131,14 @@ def predict_new_indiv(language,city,date,mobile,order_requests,stock,hotel_id):
 
       individu = to_dummies(test)
       #convert the stock
-      Xtest = pd.read_csv('/data/test_set.csv',index_col=0)
+      Xtest = pd.read_csv('data/test_set.csv',index_col=0)
       X = Xtest.stock
       mean_stock = np.mean(np.array(np.log(X+0.001)))
       std_stock = np.std(np.array(np.log(X+0.001)))
       individu.stock = (np.array(np.sqrt(individu.stock+0.001))- mean_stock)/std_stock
 
       #same format as train/test sets
-      testset = pd.read_csv('/data/testset.csv',index_col=0)
+      testset = pd.read_csv('data/testset.csv',index_col=0)
       all = pd.DataFrame([np.zeros(67, dtype=float)], columns=testset.columns)
       all[individu.columns] = individu.values
 
