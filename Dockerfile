@@ -16,7 +16,7 @@ RUN pip install xgboost
 RUN pip install pdpbox 
 RUN pip install folium
 RUN pip install shap
-RUN pip install gradio
+RUN pip install gradio==3.12.0
 RUN pip install datasets
 
 # Run the shell script
