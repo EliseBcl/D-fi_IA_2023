@@ -9,6 +9,7 @@ The "DGCCRF" of an imaginary country has received complaints about an online tra
 ## 2. Installation instructions:
 
 The dockerfile uses the 3.8 Python version. To run this dockerfile, you will need to :
+
 1 - First open a terminal and navigate to the directory you want to clone the repository.
 2 - Then, clone the repository : git clone https://github.com/EliseBcl/Defi_IA_2023.git
 3 - Navigate to the directory containing the repository: cd Defi_IA_2023
