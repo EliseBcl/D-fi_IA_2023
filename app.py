@@ -9,7 +9,7 @@ Original file is located at
 # Gradio
 """
 
-!git clone https://github.com/EliseBcl/Defi_IA_2023.git
+# !git clone https://github.com/EliseBcl/Defi_IA_2023.git
 
 """## Imports"""
 
@@ -57,7 +57,7 @@ import pickle
 
 def to_dummies(data_test):
   # merge on hotel id
-  hotels = pd.read_csv('/content/Defi_IA_2023/features_hotels.csv',index_col=0)
+  hotels = pd.read_csv('/data/features_hotels.csv',index_col=0)
   hotels = hotels.drop(['city'], axis = 1)
   data_test = data_test.join(hotels, on = 'hotel_id')
   
@@ -112,7 +112,7 @@ xgb_model_loaded = pickle.load(open('/content/Defi_IA_2023/model_gbmOpt_mat4.pkl
 
 """## Fonction de prédiction du nouvelle individu"""
 
-hotels = pd.read_csv('/content/Defi_IA_2023/features_hotels.csv',index_col=0)
+hotels = pd.read_csv('/data/features_hotels.csv',index_col=0)
 
 def predict_new_indiv(language,city,date,mobile,order_requests,stock,hotel_id):
     avatar_id = 1
@@ -131,14 +131,14 @@ def predict_new_indiv(language,city,date,mobile,order_requests,stock,hotel_id):
 
       individu = to_dummies(test)
       #convert the stock
-      Xtest = pd.read_csv('/content/Defi_IA_2023/test_set.csv',index_col=0)
+      Xtest = pd.read_csv('/data/test_set.csv',index_col=0)
       X = Xtest.stock
       mean_stock = np.mean(np.array(np.log(X+0.001)))
       std_stock = np.std(np.array(np.log(X+0.001)))
       individu.stock = (np.array(np.sqrt(individu.stock+0.001))- mean_stock)/std_stock
 
       #same format as train/test sets
-      testset = pd.read_csv('/content/Defi_IA_2023/testset.csv',index_col=0)
+      testset = pd.read_csv('/data/testset.csv',index_col=0)
       all = pd.DataFrame([np.zeros(67, dtype=float)], columns=testset.columns)
       all[individu.columns] = individu.values
 
