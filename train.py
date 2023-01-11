@@ -9,7 +9,7 @@ Original file is located at
 # Train.py
 """
 
-!git clone https://github.com/EliseBcl/Defi_IA_2023.git
+# !git clone https://github.com/EliseBcl/Defi_IA_2023.git
 
 """## Data Initialization"""
 
@@ -42,11 +42,11 @@ import matplotlib.pyplot as plt
 plt.rcParams.update({'font.size': 12})
 from sklearn.ensemble import GradientBoostingRegressor
 
-Matrix1 = pd.read_csv('/content/Defi_IA_2023/requests_1.csv',index_col=0)
-Matrix2 = pd.read_csv('/content/Defi_IA_2023/requests_2.csv',index_col=0)
-Matrix3 = pd.read_csv('/content/Defi_IA_2023/requests_3.csv',index_col=0)
-Matrix4 = pd.read_csv('/content/Defi_IA_2023/requests_4.csv',index_col=0)
-Matrix5 = pd.read_csv('/content/Defi_IA_2023/requests_5.csv',index_col=0)
+Matrix1 = pd.read_csv('/requests/requests_1.csv',index_col=0)
+Matrix2 = pd.read_csv('/requests/requests_2.csv',index_col=0)
+Matrix3 = pd.read_csv('/requests/requests_3.csv',index_col=0)
+Matrix4 = pd.read_csv('/requests/requests_4.csv',index_col=0)
+Matrix5 = pd.read_csv('/requests/requests_5.csv',index_col=0)
 
 Matrix1 = Matrix1.assign(order_request=1)
 Matrix2 = Matrix2.assign(order_request=2)
@@ -69,30 +69,30 @@ def assign_requests_order(copy_requests):
 
 for name_r in ['requests_6_part1', 'requests_6_part2', 'requests_7_part1', 'requests_7_part2', 'requests_7_part3',
                'requests_8_part1', 'requests_8_part2', 'requests_8_part3', 'requests_9_part1', 'requests_9_part2', 'requests_9_part3']:
-  r = pd.read_csv('/content/Defi_IA_2023/'+name_r+'.csv',index_col=0)
+  r = pd.read_csv('/requests/'+name_r+'.csv',index_col=0)
   b = r.copy()
   c = assign_requests_order(b)
-  r = pd.read_csv('/content/Defi_IA_2023/'+name_r+'.csv',index_col=0)
+  r = pd.read_csv('/requests/'+name_r+'.csv',index_col=0)
   r = r.join(c)
-  r.to_csv('/content/Defi_IA_2023/'+ name_r + '_order.csv')
+  r.to_csv('/requests/'+ name_r + '_order.csv')
 
 #request 6
-Matrix6_part1 = pd.read_csv('/content/Defi_IA_2023/'+'requests_6_part1'+'_order.csv',index_col=0)
+Matrix6_part1 = pd.read_csv('/requests/'+'requests_6_part1'+'_order.csv',index_col=0)
 # display(Matrix6_part1)
-Matrix6_part2 = pd.read_csv('/content/Defi_IA_2023/'+'requests_6_part2'+'_order.csv',index_col=0)
+Matrix6_part2 = pd.read_csv('/requests/'+'requests_6_part2'+'_order.csv',index_col=0)
 # display(Matrix6_part2)
 #requests 7
-Matrix7_part1 = pd.read_csv('/content/Defi_IA_2023/requests_7_part1_order.csv',index_col=0)
-Matrix7_part2 = pd.read_csv('/content/Defi_IA_2023/requests_7_part2_order.csv',index_col=0)
-Matrix7_part3 = pd.read_csv('/content/Defi_IA_2023/requests_7_part3_order.csv',index_col=0)
+Matrix7_part1 = pd.read_csv('/requests/requests_7_part1_order.csv',index_col=0)
+Matrix7_part2 = pd.read_csv('/requests/requests_7_part2_order.csv',index_col=0)
+Matrix7_part3 = pd.read_csv('/requests/requests_7_part3_order.csv',index_col=0)
 #requests 8
-Matrix8_part1 = pd.read_csv('/content/Defi_IA_2023/requests_8_part1_order.csv',index_col=0)
-Matrix8_part2 = pd.read_csv('/content/Defi_IA_2023/requests_8_part2_order.csv',index_col=0)
-Matrix8_part3 = pd.read_csv('/content/Defi_IA_2023/requests_8_part3_order.csv',index_col=0)
+Matrix8_part1 = pd.read_csv('/requests/requests_8_part1_order.csv',index_col=0)
+Matrix8_part2 = pd.read_csv('/requests/requests_8_part2_order.csv',index_col=0)
+Matrix8_part3 = pd.read_csv('/requests/requests_8_part3_order.csv',index_col=0)
 #requests 9
-Matrix9_part1 = pd.read_csv('/content/Defi_IA_2023/requests_9_part1_order.csv',index_col=0)
-Matrix9_part2 = pd.read_csv('/content/Defi_IA_2023/requests_9_part2_order.csv',index_col=0)
-Matrix9_part3 = pd.read_csv('/content/Defi_IA_2023/requests_9_part3_order.csv',index_col=0)
+Matrix9_part1 = pd.read_csv('/requests/requests_9_part1_order.csv',index_col=0)
+Matrix9_part2 = pd.read_csv('/requests/requests_9_part2_order.csv',index_col=0)
+Matrix9_part3 = pd.read_csv('/requests/requests_9_part3_order.csv',index_col=0)
 
 data = pd.concat([Matrix1, Matrix2, Matrix4, Matrix5, Matrix6_part1, Matrix6_part2, Matrix8_part1, Matrix8_part2, Matrix8_part3])
 
@@ -106,7 +106,7 @@ data.duplicated().sum()
 
 def to_dummies(data_test):
   # merge on hotel id
-  hotels = pd.read_csv('/content/Defi_IA_2023/features_hotels.csv',index_col=0)
+  hotels = pd.read_csv('/data/features_hotels.csv',index_col=0)
   hotels = hotels.drop(['city'], axis = 1)
   data_test = data_test.join(hotels, on = 'hotel_id')
 
@@ -191,17 +191,17 @@ def format_test(X):
   X_test.stock = transfo_stock(X_test.stock)
   return X_test[col]
 
-X_test = pd.read_csv('/content/Defi_IA_2023/test_set.csv',index_col=0)
+X_test = pd.read_csv('/data/test_set.csv',index_col=0)
 test = format_test(X_test.copy())
 display(test)
 
-train.to_csv('/content/Defi_IA_2023/trainset.csv')
-labels.to_csv('/content/Defi_IA_2023/labelstrain.csv')
-test.to_csv('/content/Defi_IA_2023/testset.csv')
+# train.to_csv('/content/Defi_IA_2023/trainset.csv')
+# labels.to_csv('/content/Defi_IA_2023/labelstrain.csv')
+# test.to_csv('/content/Defi_IA_2023/testset.csv')
 
-Xtrain = pd.read_csv('/content/Defi_IA_2023/trainset.csv',index_col=0)
-Ytrain = pd.read_csv('/content/Defi_IA_2023/labelstrain.csv',index_col=0)
-Xtest = pd.read_csv('/content/Defi_IA_2023/testset.csv',index_col=0)
+Xtrain = pd.read_csv('/data/trainset.csv',index_col=0)
+Ytrain = pd.read_csv('/data/labelstrain.csv',index_col=0)
+Xtest = pd.read_csv('/data/testset.csv',index_col=0)
 
 """## Pipeline"""
 
@@ -223,5 +223,5 @@ submission.index.name = 'index'
 
 display(submission)
 
-submission.to_csv('/content/Defi_IA_2023/final_predictions4.csv')
+# submission.to_csv('/content/Defi_IA_2023/final_predictions4.csv')
 
