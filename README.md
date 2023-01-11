@@ -8,7 +8,7 @@ The "DGCCRF" of an imaginary country has received complaints about an online tra
 
 ## 2. Installation instructions:
 
-
+The dockerfile uses the 3.8 Python version. To run this dockerfile, you will need to use the docker build -t command in a terminal. With this dockerfile, first we clone this github. Then, we set the directory of work as the directory of this github Defi_Ia_2023. We install then all the dependencies required. Finally we make a shell script to run sequentially the python script train.py and app.py.
 
 ## 3. Files description:
 
