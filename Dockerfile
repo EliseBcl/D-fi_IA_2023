@@ -1,5 +1,7 @@
 FROM python:3.8
 
+RUN git clone https://github.com/EliseBcl/Defi_IA_2023.git
+
 # Change to the repository directory
 WORKDIR /Defi_IA_2023
 
@@ -15,6 +17,7 @@ RUN pip install pdpbox
 RUN pip install folium
 RUN pip install shap
 RUN pip install gradio
+RUN pip install datasets
 
 # Run the shell script
-CMD ["python","app.py"]
+CMD ["bash"]
