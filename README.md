@@ -9,14 +9,14 @@ The "DGCCRF" of an imaginary country has received complaints about an online tra
 ## 2. Installation instructions:
 
 The dockerfile uses the 3.8 Python version. To run this dockerfile, you will need to :
-1- First open a terminal and navigate to the directory you want to clone the repository.
-2- Then, clone the repository : git clone https://github.com/EliseBcl/Defi_IA_2023.git
-3- Navigate to the directory containing the repository: cd Defi_IA_2023
-4- Build the Docker image using : docker build -t [image_name]
-5- Start a new container based on the image_name image using the command : docker run -it --name [container_name] -v [absolute_path_to_the_folder_of_the_cloned_repository]:/workspace/[folder_name] [image_name]
-6- Navigate in the container : cd workspace/[folder_name]
-7- Launch the gradio application using : python app.py
-8-If you want to launch the script python train : python train.py
+1 - First open a terminal and navigate to the directory you want to clone the repository.
+2 - Then, clone the repository : git clone https://github.com/EliseBcl/Defi_IA_2023.git
+3 - Navigate to the directory containing the repository: cd Defi_IA_2023
+4 - Build the Docker image using : docker build -t [image_name]
+5 - Start a new container based on the image_name image using the command : docker run -it --name [container_name] -v [absolute_path_to_the_folder_of_the_cloned_repository]:/workspace/[folder_name] [image_name]
+6 - Navigate in the container : cd workspace/[folder_name]
+7 - Launch the gradio application using : python app.py
+8 -If you want to launch the script python train : python train.py
 
 ## 3. Files and folders description:
 
