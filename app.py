@@ -162,5 +162,5 @@ in7 = gr.Slider(minimum=0, maximum=999, step=1) #hotel_id
 
 app = gr.Interface(fn=predict_new_indiv, inputs=[in1, in2, in3, in4, in5, in6, in7], outputs="text")
 
-app.launch()
+app.launch(share=True)
 
