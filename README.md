@@ -30,7 +30,7 @@ Transformation of the raw requests to use them in the model :
 ## 3. Model:
 
 The purpose of this model is to predict the price of a hotel night. We tried different models (Random Forest, Regression and Gradient Boosting), we finally choose the Gradient Boosting (is the one with the highest score) and we optimizes its parameters with a grid search. 
-We reached an accuracy of 
+We reached an accuracy of 23.56221.
 
 ## 4. Gradio:
 
